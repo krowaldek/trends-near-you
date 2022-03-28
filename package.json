@@ -1,0 +1,117 @@
+{
+  "name": "trends-near-you",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "jest-test": "jest src",
+    "test": "vitest run",
+    "dev-test": "vitest dev"
+  },
+  "dependencies": {
+    "@types/react-css-modules": "^4.6.4",
+    "axios": "^0.26.1",
+    "next": "^12.1.1",
+    "ramda": "^0.28.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.19",
+    "zustand": "^3.7.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-syntax-jsx": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@testing-library/dom": "^8.12.0",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/ramda": "^0.28.3",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "@vitejs/plugin-react": "^1.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.5.1",
+    "babel-preset-react-app": "^10.0.1",
+    "eslint": "^8.12.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "eslint-config-standard-react": "^11.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest-dom": "^4.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-testing-library": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.5.1",
+    "jest-circus": "^27.5.1",
+    "jest-scss-transform": "^1.0.1",
+    "jest-watch-typeahead": "^1.0.0",
+    "sass": "^1.49.9",
+    "stylelint": "^14.6.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard": "^25.0.0",
+    "twitter-api-v2": "^1.8.0",
+    "typescript": "^4.6.3",
+    "typescript-plugin-css-modules": "^3.4.0",
+    "vitest": "^0.7.12"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest/mocks/jest.setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.scss$": "jest-scss-transform",
+      "^.+\\.css$": "<rootDir>/jest/mocks/cssMock.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
+    "resetMocks": true
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "react-app"
+        ]
+      }
+    },
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-private-methods"
+    ],
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  }
+}

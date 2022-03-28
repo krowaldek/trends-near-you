@@ -1,0 +1,16 @@
+.listItem {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px;
+    align-items: center;
+    border: 1px solid rgb(230, 230, 230);
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+    &:hover {
+       background-color: rgb(231, 218, 245);
+    }
+}
+.listItem__title {
+    font-size: 1.2rem;
+    padding-left: clamp(5px, calc(10px + 1vmin), 20px);
+}

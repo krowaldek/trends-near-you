@@ -1,0 +1,27 @@
+.search__input {
+    padding: 15px;
+    width: 100%;
+    border:0;
+    outline: none;
+}
+.search__results {
+    width: 100%;
+    position: absolute;
+    background: white;
+    transition: transform .2s ease;
+    transform-origin: top;
+    left: 0;
+    transform: scaleY(0);
+    box-shadow: var(--shadow-elevation-medium);
+    &--show {
+        transform: scaleY(1);
+    }
+}
+
+
+
+
+.search__inner {
+    position: relative;
+    box-shadow: var(--shadow-elevation-medium);
+}

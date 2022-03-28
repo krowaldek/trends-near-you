@@ -1,0 +1,8 @@
+.tagsCloud {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: clamp(10px, 80vw, 100vw)
+}

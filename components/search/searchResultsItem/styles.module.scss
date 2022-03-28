@@ -1,0 +1,17 @@
+.item {
+    padding: 6px 15px 0 15px;
+    transition: background-color .3s ease-in-out;
+    &:hover {
+        background-color: var(--light-gray);
+        cursor: pointer;
+    }
+}
+.item__name {
+    font-size: 1rem;
+}
+.item__place {
+    font-size: .8rem;
+    font-style: italic;
+    color: var(--slate-gray);
+    padding: .2rem 0 .5rem 0;
+}

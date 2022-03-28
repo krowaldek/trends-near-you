@@ -1,0 +1,85 @@
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeOut .3s ease-in-out forwards;
+    align-items: center;
+    background-color: rgba(75, 75, 75, 0.333);
+    &.modal__show {
+        animation: fadeIn .3s ease-in-out forwards;
+        .modal__container {
+            animation: showContent .6s ease-in-out forwards;
+        }
+    }
+}
+.modal__container {
+    background-color: white;
+    padding: 20px;
+    width: clamp(10vw, 50vmax, 100vh);
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    
+}
+.modal__header {
+
+}
+.modal__title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.modal__close {
+    text-align: end;
+    cursor: pointer;
+}
+.modal__show {
+    transform: scale(1, 1);
+}
+@keyframes showContent {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    50% {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    99% {
+        visibility: hidden;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    99% {
+        visibility: visible;
+    }
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
