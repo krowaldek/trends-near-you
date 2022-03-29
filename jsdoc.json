@@ -9,12 +9,12 @@
     },
     "plugins": [
         "node_modules/better-docs/typescript",
-        "node_modules/better-docs/component"
+        "better-docs/component"
     ],
     "source": {
         "include": [""],
         "includePattern": "\\.(jsx|js|ts|tsx)$",
-        "exclude": [ "node_modules", ".next", ".vscode" ]
+        "exclude": [ "node_modules", ".next", ".vscode", "docs" ]
     },
     "templates": {
         "better-docs": {
