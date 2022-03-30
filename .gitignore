@@ -7,3 +7,5 @@ vscode
 .vscode
 .next
 docs
+.docz
+styleguide
