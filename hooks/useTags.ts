@@ -3,7 +3,7 @@ import * as R from 'ramda'
 import { useQuery } from 'react-query'
 import { TrendMatchV1, TrendV1 } from 'twitter-api-v2'
 import { getTrendsApi } from '../api/config'
-import { tag } from '../components/tagsCloud/tag'
+import { Tag } from '../common/model'
 
 /**
  * The complete Triforce, or one or more components of the Triforce.
@@ -58,7 +58,7 @@ const combineTrends = (trends: TrendMatchV1[]) => {
 }
 
 const mapToTags = (trends: TrendV1[]) => {
-  return R.map<TrendV1, tag>((trend: TrendV1): tag => ({
+  return R.map<TrendV1, Tag>((trend: TrendV1): Tag => ({
     name: trend.name,
     value: trend.tweet_volume,
     query: trend.query
