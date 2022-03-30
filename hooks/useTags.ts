@@ -5,9 +5,22 @@ import { TrendMatchV1, TrendV1 } from 'twitter-api-v2'
 import { getTrendsApi } from '../api/config'
 import { tag } from '../components/tagsCloud/tag'
 
-/* kaui2pvzBIY4zvSMaHc4AwScM
-xBsswU1u0bbWktYBVi3OF5LUFLZTw8dfsd22YZtswOD9FLeFai
-AAAAAAAAAAAAAAAAAAAAAN%2BnXAEAAAAAObwCRm6SEzARS1d6bum0O8U0AQI%3D2P3scjfpioKGWfHJhrRWKv07CcHwYV1PYtQAiwyrOcmdPQGQRl */
+/**
+ * The complete Triforce, or one or more components of the Triforce.
+ * @typedef {Object} UseQueryResult
+ * @property {boolean} hasCourage - Indicates whether the Courage component is present.
+ * @property {boolean} hasPower - Indicates whether the Power component is present.
+ * @property {boolean} hasWisdom - Indicates whether the Wisdom component is present.
+ */
+
+/**
+ *  Hook for getting trends from twitter API
+ * @namespace useTags
+ * @method
+ * @category Hooks
+ * @param {string} location
+ * @returns {UseQueryResult} React query object
+ */
 const useTags = (location: string) => {
   const getTrends = async () => {
     if (location) return (await axios.get<TrendMatchV1[]>(getTrendsApi(location))).data
@@ -29,8 +42,10 @@ const processResponse = () => {
 }
 /**
  * Remove one level of nesting array of Twitter API response
- * @param trends - list of trends
- * @returns array of trends
+ * @memberof useTags
+ * @function combineTrends
+ * @param {TrendMatchV1} trends - list of trends
+ * @returns {TrendV1} array of trends
  */
 const combineTrends = (trends: TrendMatchV1[]) => {
   return R.reduce<TrendMatchV1, TrendV1[]>((acc, trend) => [...acc, ...trend.trends], [], trends)

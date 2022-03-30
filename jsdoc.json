@@ -1,7 +1,8 @@
 {
     "opts": {
         "destination": "docs",
-        "recurse": true
+        "recurse": true,
+        "template": "node_modules/better-docs"
       },
     "tags": {
         "allowUnknownTags": true,
@@ -9,7 +10,7 @@
     },
     "plugins": [
         "node_modules/better-docs/typescript",
-        "better-docs/component"
+        "node_modules/better-docs/category"
     ],
     "source": {
         "include": [""],
@@ -17,8 +18,11 @@
         "exclude": [ "node_modules", ".next", ".vscode", "docs" ]
     },
     "templates": {
+        "search": true,
         "better-docs": {
-          "name": "My React components"
+            "name": "Trends Near You Documentation",
+            "title": "Trends Near You Documentation"
         }
-      }
+    }
+
 }
