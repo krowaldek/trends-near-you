@@ -1,4 +1,11 @@
 /**
+ * @module helpers
+ * @category Misc
+ */
+export default to
+
+/**
+ *
  * from: https://github.com/scopsy/await-to-js/blob/master/src/await-to-js.ts
  * @param { Promise } promise
  * @param { Object= } errorExt - Additional Information you can pass to the err object
@@ -19,5 +26,3 @@ export function to<T, U = Error> (
       return [err, undefined]
     })
 }
-
-export default to

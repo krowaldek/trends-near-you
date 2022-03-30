@@ -1,26 +1,14 @@
 import styles from './styles.module.scss'
 import React from 'react'
-
-/**
- * Tag model
- * @memberof Tag
- */
-export type tag = {
-  /** Display name  */
-    name: string,
-     /** Number of tagged tweets */
-    value: number | null,
-     /** Query to search for tweets  */
-    query: string
-}
+import { Tag as TagModel } from '../../../common/model'
 
 /**
  * Component props
- *
+ * @memberof Tag
  */
-interface PropsTag {
+type PropsTag = {
     /** Tag object   */
-    tag: tag,
+    tag: TagModel,
     /** Multiplier of base font size
      * Eg. 1.4
     */
@@ -31,13 +19,11 @@ const baseFontSize = 16
 /**
  *
  * Component for showing details of the user.
- *
- * @namespace Tag
+ * @namespace
  * @category Components
- * @component
  * @property {tag} tag object
  * @property {size} tag object
- * @returns {React.ReactElement}
+ * @returns {JSX.Element}
  * @example
  *
  * const tag = {

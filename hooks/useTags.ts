@@ -8,9 +8,15 @@ import { tag } from '../components/tagsCloud/tag'
 /**
  * The complete Triforce, or one or more components of the Triforce.
  * @typedef {Object} UseQueryResult
+ * @category Model
  * @property {boolean} hasCourage - Indicates whether the Courage component is present.
  * @property {boolean} hasPower - Indicates whether the Power component is present.
  * @property {boolean} hasWisdom - Indicates whether the Wisdom component is present.
+ */
+
+/**
+ * @module useTags
+ * @category Hooks
  */
 
 /**
