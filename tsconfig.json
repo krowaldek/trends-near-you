@@ -22,7 +22,7 @@
     "incremental": true
   },
   "include": [
-    "./src"
+    "."
 , "styles.d.ts", "stores", "api"  ],
   "exclude": [
     "node_modules"

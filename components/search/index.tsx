@@ -4,9 +4,37 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TrendLocationV1 } from 'twitter-api-v2'
 import SearchResultsItem from './searchResultsItem'
 
-interface PropsSearch {
+/**
+ * Component props
+ * @memberof Search
+ */
+type PropsSearch = {
+    /** Search select event */
     searchHandler?: (place: TrendLocationV1 | null) => void
 }
+
+/**
+ * This callback is displayed as part of the Requester class.
+ * @memberof Search
+ * @callback searchHandler
+ * @param {TrendLocationV1 | null} place object from twitter api
+ * @returns {void}
+ */
+
+/**
+ * Search component including input with search results
+ * @namespace
+ * @category Components
+ * @param {function} [searchHandler] - Emitted when the user has selected a location from search results
+ * @returns {JSX.Element} JSX Element
+ * @example
+ *
+ * const clickHandler = (place: TrendLocationV1 | null): void => {
+ * console.log(place)
+ * }
+ *
+ * <Search searchHandler="clickHandler" />
+ */
 const Search = ({ searchHandler }: PropsSearch) => {
   const { status, data = [] } = useLocations()
   const [results, setResults] = useState<TrendLocationV1[]>([])

@@ -6,26 +6,15 @@ import { getTrendsApi } from '../api/config'
 import { Tag } from '../common/model'
 
 /**
- * The complete Triforce, or one or more components of the Triforce.
- * @typedef {Object} UseQueryResult
- * @category Model
- * @property {boolean} hasCourage - Indicates whether the Courage component is present.
- * @property {boolean} hasPower - Indicates whether the Power component is present.
- * @property {boolean} hasWisdom - Indicates whether the Wisdom component is present.
- */
-
-/**
  * @module useTags
  * @category Hooks
+ * @desc Hook for getting trends from twitter API
  */
 
 /**
  *  Hook for getting trends from twitter API
- * @namespace useTags
- * @method
- * @category Hooks
  * @param {string} location
- * @returns {UseQueryResult} React query object
+ * @returns {UseQueryResult} React-Query object
  */
 const useTags = (location: string) => {
   const getTrends = async () => {
@@ -48,15 +37,21 @@ const processResponse = () => {
 }
 /**
  * Remove one level of nesting array of Twitter API response
- * @memberof useTags
- * @function combineTrends
+ * @method
+ * @category Hooks
  * @param {TrendMatchV1} trends - list of trends
  * @returns {TrendV1} array of trends
  */
 const combineTrends = (trends: TrendMatchV1[]) => {
   return R.reduce<TrendMatchV1, TrendV1[]>((acc, trend) => [...acc, ...trend.trends], [], trends)
 }
-
+/**
+ * Map TrendsV1 to Tag
+ * @category Hooks
+ * @method
+ * @param {TrendMatchV1[]} array of trends from Twitter API
+ * @returns {Tag[]} array of tags
+ */
 const mapToTags = (trends: TrendV1[]) => {
   return R.map<TrendV1, Tag>((trend: TrendV1): Tag => ({
     name: trend.name,

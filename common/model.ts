@@ -2,33 +2,42 @@
  * @namespace model
  * @category Model
  */
-export const name = 'model'
+export const moduleName = 'model'
 
 /**
  * @memberof model
  */
 export type Trend = {
-   'name': string,
-   'url': string,
-   'query': string[],
-  'tweet_volume': string | null
+  /** Name of the search result */
+  'name': string,
+   /** Url of the tagged tweets  */
+  'url': string,
+   /** Query to search for tweets  */
+  'query': string[],
+   /** Volume of tagged tweets  */
+ 'tweet_volume': string | null
 }
 /**
  * @memberof model
  */
 export type SearchResult = {
+   /** Name of the search result */
   'name': string,
+   /** Url of the tagged tweets  */
   'url': string,
+   /** Query to search for tweets  */
   'query': string[],
+   /** Volume of tagged tweets  */
  'tweet_volume': string | null
 }
 
 /**
  * Tag model
  * @memberof model
+ * @alias TagModel
  */
 export type Tag = {
-  /** Display name  */
+    /** Display name  */
     name: string,
      /** Number of tagged tweets */
     value: number | null,

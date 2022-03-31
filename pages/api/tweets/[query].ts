@@ -1,5 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getApiKey, getSearchTweetsApi } from '../config'
+/**
+ * Tweets search endpoint
+ * @module /tweets/[query]
+ * @category API
+ * @subcategory GET
+ * @param {string} query - Search query
+ * @returns {Tweets} JSON object with tweets
+ */
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
   const query = req.query.query
   if (typeof query === 'string') {

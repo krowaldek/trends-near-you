@@ -1,20 +1,44 @@
-import Tag, { tag } from './tag'
+import Tag from './tag'
+import { Tag as TagModel } from '../../common/model'
 import styles from './styles.module.scss'
 import React, { useEffect, useState } from 'react'
 import * as R from 'ramda'
 
-interface PropsTagsCloud {
-    tags: tag[]
+/**
+ * Component props
+ * @memberof TagsCloud
+ */
+type PropsTagsCloud = {
+    tags: TagModel[]
 }
-interface SizedTag extends tag {
+/**
+ * Tag with calculated font size based on the volume
+ * @memberof TagsCloud
+ */
+type SizedTag = TagModel & {
+    /** Calculated font size */
     size: number | undefined
 }
 
+/**
+ * Range of volumes of array of tags
+ * @memberof TagsCloud
+ */
 type TagsRange = {
+    /** Minimal value */
     min: number,
+    /** Maximal value */
     max: number,
+    /** Average value */
     avg: number
 }
+/**
+ * Tag cloud with tags sized based on their volume
+ * @namespace
+ * @category Components
+ * @param {TagModel[]} tags - tags to display
+ * @returns {JSX.Element} JSX Element
+ */
 const TagsCloud = ({ tags }:PropsTagsCloud) => {
   const [sizedTags, setSizedTags] = useState<SizedTag[]>([])
 
@@ -33,7 +57,16 @@ const TagsCloud = ({ tags }:PropsTagsCloud) => {
 }
 export default TagsCloud
 
-const sizeOfTag = R.curry((range: TagsRange, tag: tag): SizedTag => {
+/**
+ * Calculate size of tag based on the volume.
+ * It search for value between average and maximum range value and
+ * divide by difference between maximum and average range value.
+ * @memberof TagsCloud
+ * @method
+ * @param {TagsRange} tagsRange - range of volumes of array of tags
+ * @returns {SizedTag} SizedTag - tag with calculated font size
+ */
+const sizeOfTag = R.curry((range: TagsRange, tag: TagModel): SizedTag => {
   const size = tag.value && tag.value > range.avg ? (tag.value / (range.max - range.avg)) : undefined
 
   return {
@@ -42,7 +75,13 @@ const sizeOfTag = R.curry((range: TagsRange, tag: tag): SizedTag => {
   }
 })
 
-const calcRange = (tags: tag[]): TagsRange => {
+/**
+ * Calculate range of volumes of tags from array of tags
+ * @memberof TagsCloud
+ * @param {TagModel[]} Tags - array of tags
+ * @returns {TagsRange} TagsRange
+ */
+const calcRange = (tags: TagModel[]): TagsRange => {
   const values = getValues(tags)
   return {
     min: R.apply(Math.min, values),
@@ -50,8 +89,14 @@ const calcRange = (tags: tag[]): TagsRange => {
     avg: R.reduce(R.add, 0, values) / values.length
   }
 }
-
-const getValues = R.compose<tag[][], tag[], number[]>(
+/**
+ * Take non null volume tags from array of tags
+ * @memberof TagsCloud
+ * @method
+ * @param {TagModel[]} tags - array of tags
+ * @returns {number[]} number - array of volumes of tags
+ */
+const getValues = R.compose<TagModel[][], TagModel[], number[]>(
   R.map(x => x.value as number),
-  R.filter<tag>(x => x.value !== null)
+  R.filter<TagModel>(x => x.value !== null)
 )

@@ -9,20 +9,17 @@ import { Tag as TagModel } from '../../../common/model'
 type PropsTag = {
     /** Tag object   */
     tag: TagModel,
-    /** Multiplier of base font size
-     * Eg. 1.4
-    */
+    /** Multiplier of base font size. Example 1.4 */
     size: number | undefined
 }
 const baseFontSize = 16
 
 /**
- *
- * Component for showing details of the user.
+ * Component represent single tag.
  * @namespace
  * @category Components
- * @property {tag} tag object
- * @property {size} tag object
+ * @param {TagModel} tag - tag model object
+ * @param {number | undefined} size - Multiplier of base font size. Example 1.4
  * @returns {JSX.Element}
  * @example
  *
