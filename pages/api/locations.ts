@@ -2,8 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { TwitterApi } from 'twitter-api-v2'
 import { getApiKey } from './config'
 /**
- * Location endpoint
- * /location
+ * Locations endpoint
  * @module /locations
  * @category API
  * @subcategory GET
