@@ -32,7 +32,10 @@ it('should show two results ', async () => {
   render(<Search />)
   const searchInput = screen.getByTestId('input')
   userEvent.type(searchInput, 'FR')
-  expect(screen.getAllByTestId('listitem')).toHaveLength(2)
+  await waitFor(() => {
+    console.log('screen.getAllByTestId :>> ', screen.getAllByTestId('listitem').length)
+    return expect(screen.getAllByTestId('listitem')).toHaveLength(2)
+  })
 })
 
 it('should hide search results after click ', async () => {
@@ -59,6 +62,6 @@ it('should hide search results after clear input ', async () => {
   userEvent.click(searchInput)
 
   await waitFor(() => {
-    return expect(screen.queryAllByTestId('listitem')).toHaveLength(2)
+    return expect(screen.queryAllByTestId('listitem')).toHaveLength(0)
   })
 })
