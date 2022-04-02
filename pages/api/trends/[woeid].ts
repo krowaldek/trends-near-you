@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { TwitterApi } from 'twitter-api-v2'
-import { getApiKey } from '../config'
+import { getApiKey, getApiUrl } from '../config'
 /**
  * Trends search endpoint
  * @module /trends/[woeid]
@@ -13,8 +12,18 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
   const woeid = req.query.woeid
   if (typeof woeid === 'string') {
     try {
-      const twitterClient = new TwitterApi(getApiKey()).readOnly
-      const trends = await twitterClient.v1.trendsByPlace(woeid)
+      const response = await fetch(`${getApiUrl()}trends/place.json?id=${woeid}`, {
+        method: 'GET',
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${getApiKey()}`
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer'
+      })
+      const trends = await response.json()
       res.send(JSON.stringify(trends))
     } catch (err) {
       res.send(JSON.stringify(err))
