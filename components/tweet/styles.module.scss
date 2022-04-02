@@ -1,0 +1,40 @@
+.tweet {
+    display: grid;
+    gap: 0.5em;
+    padding: 0.5rem;
+    background-color: white;
+    grid-template-areas: "avatar header"
+                         "avatar tweet"
+                         "avatar media"
+                         "avatar controls";
+}
+.avatar {
+    grid-area: avatar;
+    border-radius: 50px;
+}
+.header {
+    grid-area: header;
+    display: flex;
+    text-overflow: ellipsis;
+    gap: 0.5em;
+    color: var(--dark-grey);
+}
+.author {
+    font-weight: 600;
+    color: black;
+}
+.username {
+
+}
+.adddate {
+
+}
+.content {
+    grid-area: tweet;
+}
+.media {
+    grid-area: media;
+}
+.controls {
+    grid-area: controls;
+}

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useQuery } from 'react-query'
-import { TweetV1 } from 'twitter-api-v2'
 import { getTweetsApi } from '../api/config'
 
 /**
@@ -16,7 +15,7 @@ import { getTweetsApi } from '../api/config'
  */
 const useTweets = (query: string) => {
   const getTweets = async () => {
-    if (query) return (await axios.get<TweetV1[]>(getTweetsApi(query))).data
+    if (query) return (await axios.get(window.location.origin + '/' + getTweetsApi(query))).data.statuses
     else return []
   }
   return useQuery(['tweets', query], getTweets
