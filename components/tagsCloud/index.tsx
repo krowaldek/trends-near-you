@@ -9,7 +9,10 @@ import * as R from 'ramda'
  * @memberof TagsCloud
  */
 type PropsTagsCloud = {
-    tags: TagModel[]
+    /** Tags array */
+    tags: TagModel[],
+    /** Event fired when tag is clicked */
+    clickHandler: (tag: TagModel) => void
 }
 /**
  * Tag with calculated font size based on the volume
@@ -39,17 +42,20 @@ type TagsRange = {
  * @param {TagModel[]} tags - tags to display
  * @returns {JSX.Element} JSX Element
  */
-const TagsCloud = ({ tags }:PropsTagsCloud) => {
+const TagsCloud = ({ tags, clickHandler }: PropsTagsCloud) => {
   const [sizedTags, setSizedTags] = useState<SizedTag[]>([])
 
   useEffect(() => {
     const tagsRange = calcRange(tags)
     setSizedTags(R.map(sizeOfTag(tagsRange), tags))
   }, [tags])
+  const onClickHandler = (tag: TagModel) => {
+    clickHandler(tag)
+  }
   return (
     <div className={styles.tagsCloud}>
       {sizedTags.map((tag, index) =>
-        <Tag key={index} tag={tag} size={tag.size} />
+        <Tag key={index} tag={tag} size={tag.size} clickHandler={onClickHandler} />
       )}
 
     </div>

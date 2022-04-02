@@ -13,10 +13,10 @@ import { Tag } from '../common/model'
 
 /**
  *  Hook for getting trends from twitter API
- * @param {string} location
+ * @param {string | null} location
  * @returns {UseQueryResult} React-Query object
  */
-const useTags = (location: string) => {
+const useTags = (location: string | null) => {
   const getTrends = async () => {
     if (location) return (await axios.get<TrendMatchV1[]>(getTrendsApi(location))).data
     else return []

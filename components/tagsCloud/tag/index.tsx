@@ -11,6 +11,8 @@ type PropsTag = {
     tag: TagModel,
     /** Multiplier of base font size. Example 1.4 */
     size: number | undefined
+    /** Event fired when tag is clicked */
+    clickHandler: (tag: TagModel) => void
 }
 const baseFontSize = 16
 
@@ -20,7 +22,7 @@ const baseFontSize = 16
  * @category Components
  * @param {TagModel} tag - tag model object
  * @param {number | undefined} size - Multiplier of base font size. Example 1.4
- * @returns {JSX.Element}
+ * @returns {JSX.Element} JSX Element
  * @example
  *
  * const tag = {
@@ -32,10 +34,13 @@ const baseFontSize = 16
  *
  * <Tag tag={tag} size={size} />
  */
-const Tag = ({ tag, size } : PropsTag) => {
+const Tag = ({ tag, size, clickHandler } : PropsTag) => {
   const calculatedSize = size ? baseFontSize * (1 + size) : baseFontSize
+  const handler = () => {
+    clickHandler(tag)
+  }
   return (
-    <div data-testid='item' className={styles.tag} style={{ fontSize: `${calculatedSize}px` }}>{tag.name} {
+    <div data-testid='item' className={styles.tag} onClick={handler} style={{ fontSize: `${calculatedSize}px` }}>{tag.name} {
     tag.value && `(${tag.value})`
     }
     </div>
