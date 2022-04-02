@@ -25,7 +25,7 @@ function HomePage () {
   }, [data])
 
   const onClickHandler = (tag: Tag) => {
-    router.push(`/tweets/${tag.query}`)
+    router.push(`/trend/${tag.query}`)
   }
 
   return (
