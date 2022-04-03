@@ -34,7 +34,7 @@ code {
   align-items: center;
   justify-content: center;
   background-color: white;
-  padding-top: 5rem;
+  padding-top: 10rem;
   color: black;
   font-size: calc(10px + 5vmin);
 }
@@ -56,9 +56,10 @@ button {
   font-size: calc(10px + 2vmin);
 }
 @import 'variables.scss';
-
+:root {
+  font-size: 10px;
+}
 * {
-  font-size: 20px;
   box-sizing: border-box;
 }
 .app__search {
