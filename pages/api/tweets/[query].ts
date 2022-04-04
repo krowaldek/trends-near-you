@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getApiKey, getSearchTweetsApi } from '../config'
+import tweetsService from '../../../services/tweets'
 /**
  * Tweets search endpoint
  * @module /tweets/[query]
@@ -12,19 +12,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
   const query = req.query.query
   if (typeof query === 'string') {
     try {
-      const response = await fetch(getSearchTweetsApi(query), {
-        method: 'GET',
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${getApiKey()}`
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer'
-      })
-      const tweets = await response.json()
-      res.send(JSON.stringify(tweets))
+      res.send(JSON.stringify(await tweetsService(query)))
     } catch (err) {
       res.send(JSON.stringify(err))
     }
