@@ -1,0 +1,15 @@
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 2.5rem;
+    background-color: #fff;
+    box-shadow: var(--shadow-elevation-medium);
+}
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.back {
+    width: 3rem;
+}
