@@ -1,7 +1,7 @@
 import { getApiKey, getSearchTweetsApi } from '../pages/api/config'
 
-const tweetsService = async (query: string) => {
-  const response = await fetch(getSearchTweetsApi(query), {
+const tweetsService = async (query: string, maxId?: number) => {
+  const response = await fetch(getSearchTweetsApi(query, maxId || undefined), {
     method: 'GET',
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     credentials: 'same-origin', // include, *same-origin, omit

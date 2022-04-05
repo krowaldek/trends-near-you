@@ -14,12 +14,11 @@ import { getTweetsApi } from '../api/config'
  * @param {string} query
  * @returns {UseQueryResult} React-Query object
  */
-const useTweets = (query: string) => {
+const useTweets = (query: string, maxId: number, origin: string) => {
   const getTweets = async () => {
-    if (query) return (await axios.get(window.location.origin + '/' + getTweetsApi(query))).data.statuses as TweetV1[]
+    if (query) return (await axios.get(getTweetsApi(query, origin, maxId))).data as TweetV1[]
     else return []
   }
-  return useQuery(['tweets', query], getTweets
-  )
+  return useQuery(['tweets', query, maxId], getTweets)
 }
 export default useTweets

@@ -1,0 +1,26 @@
+
+.tweets {
+   display: flex;
+   flex-flow: row wrap;
+   flex: 1 auto;
+   gap: 1.5rem;
+   padding: 1rem 5rem;
+   width: 100%;
+   overflow: scroll;
+}
+.tweet {
+    flex: 1;
+    min-width: 350px;
+}
+.fetch {
+    color: var(--accent);
+    font-size: 1.8rem;
+    padding: 1rem;
+    font-weight: 600;
+    margin-inline: 0;
+    display: flex;
+    justify-content: center;
+    & span {
+        cursor: pointer;
+    }
+}

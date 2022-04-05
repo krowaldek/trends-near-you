@@ -9,10 +9,14 @@ import tweetsService from '../../../services/tweets'
  * @returns {Tweets} JSON object with tweets
  */
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
-  const query = req.query.query
+  const [query, maxId] = req.query.query
   if (typeof query === 'string') {
     try {
-      res.send(JSON.stringify(await tweetsService(query)))
+      if (maxId) {
+        res.send(JSON.stringify(await tweetsService(query, +maxId)))
+      } else {
+        res.send(JSON.stringify(await tweetsService(query)))
+      }
     } catch (err) {
       res.send(JSON.stringify(err))
     }

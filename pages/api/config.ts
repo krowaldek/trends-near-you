@@ -6,4 +6,8 @@ const API = {
 
 export const getApiKey = () => API.KEY
 export const getApiUrl = () => API.URL
-export const getSearchTweetsApi = (query: string) => `${API.URL}${API.TWEETS}?q=${query}`
+export const getSearchTweetsApi = (query: string, sinceId?:number) => {
+  const sinceIdParameter = sinceId ? `&max_id=${sinceId}` : ''
+
+  return `${API.URL}${API.TWEETS}?q=${query}${sinceIdParameter}`
+}
