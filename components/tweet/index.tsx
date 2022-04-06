@@ -5,7 +5,6 @@ import styles from './styles.module.scss'
 import { format } from 'timeago.js'
 import ReactHtmlParser from 'react-html-parser'
 
-
 /**
  * Component props
  * @memberof Tag
