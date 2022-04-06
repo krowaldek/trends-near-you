@@ -41,11 +41,11 @@ export default function MyApp ({ Component, pageProps, router }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <div className='app-wrap'>
+          <Head>
+            <title>Trends near you</title>
+          </Head>
           <LazyMotion features={domAnimation}>
             <AnimatePresence exitBeforeEnter>
-              <Head>
-                <title>Trends near you</title>
-              </Head>
               <m.div
                 key={router.route.concat(fade.name)}
                 className='page-wrap'
