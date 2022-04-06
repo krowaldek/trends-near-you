@@ -28,7 +28,7 @@ const Topbar = ({ title }: PropsTopbar) => {
   return (
     <div className={styles.topbar}>
       <div className={styles.back} onClick={backHandler}>
-        <Image src={backButton} alt='back' />
+        <Image src={backButton} width={30} height={30} alt='back' />
       </div>
       <p className={styles.title} role='title'>{title}</p>
     </div>

@@ -10,5 +10,5 @@ const setup = () => {
 
 it('should show top bar title ', async () => {
   setup()
-  expect(screen.getByRole('title')).toBe('test title')
+  expect(screen.getByRole('title')).toHaveTextContent('test title')
 })

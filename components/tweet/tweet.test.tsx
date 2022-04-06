@@ -1,22 +1,17 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
+import { TweetV1 } from 'twitter-api-v2'
 import { it, expect } from 'vitest'
+import Tweet from '.'
+import { format } from 'timeago.js'
 
-const setup = () => {
-  const tag = {
-    name: 'test',
-    value: 16
-  } as tag
+it('should show tweet ', async () => {
+  const tweet = { created_at: 'Tue Apr 05 16:09:09 +0000 2022', id: 1511375395978895400, id_str: '1511375395978895377', text: 'RT @Kate_Arno: Channel 4 does not cost the public any money. It’s profitable. It supports an independent TV production industry across the…', truncated: false, entities: { hashtags: [], symbols: [], user_mentions: [{ screen_name: 'Kate_Arno', name: 'Katie Arnold', id: 59217111, id_str: '59217111', indices: [3, 13] }], urls: [] }, metadata: { iso_language_code: 'en', result_type: 'recent' }, source: '<a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>', in_reply_to_status_id: null, in_reply_to_status_id_str: null, in_reply_to_user_id: null, in_reply_to_user_id_str: null, in_reply_to_screen_name: null, user: { id: 865350430724948000, id_str: '865350430724947968', name: 'Alix MacDonald', screen_name: 'alix_macdonald', location: 'Edinburgh, Scotland', description: '', url: null, entities: { description: { urls: [] } }, protected: false, followers_count: 33, friends_count: 289, listed_count: 1, created_at: 'Thu May 18 23:36:34 +0000 2017', favourites_count: 8467, utc_offset: null, time_zone: null, geo_enabled: true, verified: false, statuses_count: 1627, lang: null, contributors_enabled: false, is_translator: false, is_translation_enabled: false, profile_background_color: 'F5F8FA', profile_background_image_url: null, profile_background_image_url_https: null, profile_background_tile: false, profile_image_url: 'http://pbs.twimg.com/profile_images/1252000594224721920/AMPwIg23_normal.jpg', profile_image_url_https: 'https://pbs.twimg.com/profile_images/1252000594224721920/AMPwIg23_normal.jpg', profile_banner_url: 'https://pbs.twimg.com/profile_banners/865350430724947968/1524962402', profile_link_color: '1DA1F2', profile_sidebar_border_color: 'C0DEED', profile_sidebar_fill_color: 'DDEEF6', profile_text_color: '333333', profile_use_background_image: true, has_extended_profile: true, default_profile: true, default_profile_image: false, following: null, follow_request_sent: null, notifications: null, translator_type: 'none', withheld_in_countries: [] }, geo: null, coordinates: null, place: null, contributors: null, retweeted_status: { created_at: 'Mon Apr 04 20:55:49 +0000 2022', id: 1511085152772010000, id_str: '1511085152772009990', text: 'Channel 4 does not cost the public any money. It’s profitable. It supports an independent TV production industry ac… https://t.co/IkJbnNayZR', truncated: true, entities: { hashtags: [], symbols: [], user_mentions: [], urls: [{ url: 'https://t.co/IkJbnNayZR', expanded_url: 'https://twitter.com/i/web/status/1511085152772009990', display_url: 'twitter.com/i/web/status/1…', indices: [117, 140] }] }, metadata: { iso_language_code: 'en', result_type: 'recent' }, source: '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', in_reply_to_status_id: null, in_reply_to_status_id_str: null, in_reply_to_user_id: null, in_reply_to_user_id_str: null, in_reply_to_screen_name: null, user: { id: 59217111, id_str: '59217111', name: 'Katie Arnold', screen_name: 'Kate_Arno', location: 'London', description: 'Award-winning filmmaker & investigative journalist, working with the BBC, Channel 4 & Al Jazeera. Used to live in #Myanmar, now covering human rights anywhere.', url: 'https://t.co/ap8g7xvUAy', entities: { url: { urls: [{ url: 'https://t.co/ap8g7xvUAy', expanded_url: 'http://www.katiearnold.co.uk', display_url: 'katiearnold.co.uk', indices: [0, 23] }] }, description: { urls: [] } }, protected: false, followers_count: 7265, friends_count: 1753, listed_count: 65, created_at: 'Wed Jul 22 19:11:02 +0000 2009', favourites_count: 467, utc_offset: null, time_zone: null, geo_enabled: true, verified: true, statuses_count: 2175, lang: null, contributors_enabled: false, is_translator: false, is_translation_enabled: false, profile_background_color: '165169', profile_background_image_url: 'http://abs.twimg.com/images/themes/theme12/bg.gif', profile_background_image_url_https: 'https://abs.twimg.com/images/themes/theme12/bg.gif', profile_background_tile: true, profile_image_url: 'http://pbs.twimg.com/profile_images/1198314736418459649/Z8fWxGe8_normal.jpg', profile_image_url_https: 'https://pbs.twimg.com/profile_images/1198314736418459649/Z8fWxGe8_normal.jpg', profile_banner_url: 'https://pbs.twimg.com/profile_banners/59217111/1495107234', profile_link_color: '801F10', profile_sidebar_border_color: 'FFFFFF', profile_sidebar_fill_color: '445E69', profile_text_color: '355A69', profile_use_background_image: true, has_extended_profile: false, default_profile: false, default_profile_image: false, following: null, follow_request_sent: null, notifications: null, translator_type: 'none', withheld_in_countries: [] }, geo: null, coordinates: null, place: null, contributors: null, is_quote_status: false, retweet_count: 10763, favorite_count: 50167, favorited: false, retweeted: false, lang: 'en' }, is_quote_status: false, retweet_count: 10763, favorite_count: 0, favorited: false, retweeted: false, lang: 'en' } as unknown as TweetV1
 
-  render(<Tag tag={tag} size={16} clickHandler={() => {}} />)
-}
+  render(<Tweet tweet={tweet} />)
 
-it('should show tag name ', async () => {
-  setup()
-  expect(screen.getByText('test (16)')).toBeInTheDocument()
-})
-
-it('should calculate correct font size ', async () => {
-  setup()
-  expect(screen.getByText('test (16)').style.fontSize).toBe('24px')
+  expect(screen.getByText(tweet.user.screen_name)).toBeInTheDocument()
+  expect(screen.getByText(`@${tweet.user.name}`)).toBeInTheDocument()
+  expect(screen.getByText(`- ${format(tweet.created_at, 'en_US')}`)).toBeInTheDocument()
+  expect(screen.getByText(`- ${format(tweet.created_at, 'en_US')}`)).toBeInTheDocument()
 })

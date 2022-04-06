@@ -2,7 +2,7 @@ import { TweetV1 } from 'twitter-api-v2'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { format, render, cancel, register } from 'timeago.js'
+import { format } from 'timeago.js'
 import ReactHtmlParser from 'react-html-parser'
 
 
@@ -65,7 +65,7 @@ const Tweet = ({ tweet }: PropsTweet) => {
     const favoriteCount = tweet.retweeted_status ? tweet.retweeted_status.favorite_count : tweet.favorite_count
 
   return (
-    <div className={styles.tweet}>
+    <div className={styles.tweet} data-testid="tweet">
       <div className={styles.inner__avatar}>
           <Image
             src={tweet.user.profile_image_url_https} alt='' width={48}
