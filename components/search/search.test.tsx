@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from '.'
 import userEvent from '@testing-library/user-event'
-import { render, screen, waitForElementToBeRemoved, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { TrendLocationV1 } from 'twitter-api-v2'
 import { it, expect } from 'vitest'
 
