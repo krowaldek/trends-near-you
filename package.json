@@ -12,6 +12,7 @@
     "docs": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
+    "@types/domhandler": "^2.4.2",
     "@types/react-css-modules": "^4.6.4",
     "axios": "^0.26.1",
     "framer-motion": "^6.2.9",

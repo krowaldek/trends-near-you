@@ -1665,6 +1665,11 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.0.tgz#23509ebc1fa32f1b4d50d6a66c4032d5b8eaabdc"
   integrity sha512-/ceqdqeRraGolFTcfoXNiqjyQhZzbINDngeoAq9GoHa8PPK1yNzTaxWjA6BFWp5Ua9JpXEMSS4s5i9tS0hOJtw==
 
+"@types/domhandler@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@types/domhandler/-/domhandler-2.4.2.tgz#5182cf74599b53a583146e13b0a68070b5f456f8"
+  integrity sha512-T6Fx2wcgCMGYAgXsWuc73FJe10QiBdfb0T9abSAMNYYJfxZpVNVlLvwpCuY71OMA0IdZhxpEwjhJpOUVmIEgnQ==
+
 "@types/domutils@*":
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/@types/domutils/-/domutils-1.7.4.tgz#bb5f1807673e295782614b0a383b4dc1ecd2af97"
