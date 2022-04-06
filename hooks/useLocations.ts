@@ -1,7 +1,5 @@
-import axios from 'axios'
 import { useQuery } from 'react-query'
-import { TrendLocationV1 } from 'twitter-api-v2'
-import { getLocationsApi } from '../api/config'
+import locations from '../services/locations'
 
 /**
  * @module useLocations
@@ -15,10 +13,6 @@ import { getLocationsApi } from '../api/config'
  * @returns {UseQueryResult} React-Query object
  */
 const useLocations = () => {
-  const getLocations = async () => {
-    return (await (axios.get<TrendLocationV1[]>(getLocationsApi()))).data
-  }
-
-  return useQuery(['locations'], getLocations)
+  return useQuery(['locations'], locations)
 }
 export default useLocations

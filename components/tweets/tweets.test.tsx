@@ -3973,7 +3973,7 @@ const data = () => {
       retweeted: false,
       lang: 'pt'
     }
-  ] as TweetV1[]
+  ] as unknown as TweetV1[]
 
   return tweets
 }

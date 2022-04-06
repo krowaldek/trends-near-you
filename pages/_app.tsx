@@ -8,6 +8,7 @@ import {
 } from 'framer-motion'
 
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import Head from 'next/head'
 
 export default function MyApp ({ Component, pageProps, router }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient({
@@ -42,6 +43,9 @@ export default function MyApp ({ Component, pageProps, router }: AppProps) {
         <div className='app-wrap'>
           <LazyMotion features={domAnimation}>
             <AnimatePresence exitBeforeEnter>
+              <Head>
+                <title>Trends near you</title>
+              </Head>
               <m.div
                 key={router.route.concat(fade.name)}
                 className='page-wrap'

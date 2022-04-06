@@ -3,33 +3,26 @@ import Search from '.'
 import userEvent from '@testing-library/user-event'
 import { render, screen, waitForElementToBeRemoved, waitFor } from '@testing-library/react'
 import { TrendLocationV1 } from 'twitter-api-v2'
-import { vi, it, expect } from 'vitest'
+import { it, expect } from 'vitest'
 
-vi.mock('../../hooks/useLocations', () => {
-  return {
-    __esModule: true,
-    default: () => ({
-      data: [{
-        name: 'Fresno',
-        woeid: 1,
-        country: 'UE'
-      },
-      {
-        name: 'France',
-        woeid: 2,
-        country: 'FR'
-      },
-      {
-        name: 'Germany',
-        woeid: 3,
-        country: 'DE'
-      }] as TrendLocationV1[]
-    })
-  }
-})
+const locations = () => ([{
+  name: 'Fresno',
+  woeid: 1,
+  country: 'UE'
+},
+{
+  name: 'France',
+  woeid: 2,
+  country: 'FR'
+},
+{
+  name: 'Germany',
+  woeid: 3,
+  country: 'DE'
+}]) as TrendLocationV1[]
 
 it('should show two results ', async () => {
-  render(<Search />)
+  render(<Search locations={locations()} />)
   const searchInput = screen.getByTestId('input')
   userEvent.type(searchInput, 'FR')
   await waitFor(() => {
@@ -39,7 +32,7 @@ it('should show two results ', async () => {
 })
 
 it('should hide search results after click ', async () => {
-  render(<Search />)
+  render(<Search locations={locations()} />)
   const searchInput = screen.getByTestId('input')
 
   userEvent.type(searchInput, 'FR')
@@ -47,14 +40,14 @@ it('should hide search results after click ', async () => {
   await waitFor(() => {
     return userEvent.click(screen.getAllByTestId('listitem')[0])
   })
-
-  waitForElementToBeRemoved(screen.queryAllByTestId('listitem')).then(() => {
+  expect(screen.queryAllByTestId('listitem')).toHaveLength(0)
+  /* waitForElementToBeRemoved(screen.queryAllByTestId('listitem')).then(() => {
     expect(screen.queryAllByTestId('listitem')).toHaveLength(0)
-  })
+  }) */
 })
 
 it('should hide search results after clear input ', async () => {
-  render(<Search />)
+  render(<Search locations={locations()} />)
   const searchInput = screen.getByTestId('input')
 
   userEvent.type(searchInput, 'FR')

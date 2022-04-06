@@ -23,7 +23,8 @@ const useTags = (location: string | null) => {
   }
   return useQuery(['trends', location], getTrends,
     {
-      select: processResponse()
+      select: processResponse(),
+      enabled: (location || '').length > 0
     }
   )
 }

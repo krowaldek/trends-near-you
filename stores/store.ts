@@ -1,17 +1,32 @@
 import create from 'zustand'
+import { Tag } from '../common/model'
 
 interface AppState {
   location: string
-  setLocation: (loc: string) => void
+  setLocation: (loc: string) => void,
+  searchValue: string
+  setSearchValue: (searchValue: string) => void,
+  tags: Tag[],
+  setTags: (tags: Tag[]) => void
 }
 
 export const useStore = create<AppState>((set) => ({
-  // initial state
   location: '',
-  // methods for manipulating state
   setLocation: (loc: string) => {
     set((state) => ({
       location: loc
+    }))
+  },
+  searchValue: '',
+  setSearchValue: (searchValue: string) => {
+    set(() => ({
+      searchValue: searchValue
+    }))
+  },
+  tags: [],
+  setTags: (tags: Tag[]) => {
+    set(() => ({
+      tags: tags
     }))
   }
 }))
