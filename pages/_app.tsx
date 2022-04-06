@@ -33,7 +33,7 @@ export default function MyApp ({ Component, pageProps, router }: AppProps) {
       }
     },
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       easing: 'ease'
     }
   }
