@@ -2,7 +2,7 @@ import axios from 'axios'
 import * as R from 'ramda'
 import { useQuery } from 'react-query'
 import { TrendMatchV1, TrendV1 } from 'twitter-api-v2'
-import { getTrendsApi } from '../api/config'
+import { getTrendsApi } from '../webapi/config'
 import { Tag } from '../common/model'
 
 /**

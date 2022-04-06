@@ -23,7 +23,7 @@
   },
   "include": [
     "."
-, "styles.d.ts", "stores", "api"  ],
+, "styles.d.ts", "stores", "webapi"  ],
   "exclude": [
     "node_modules"
   ]

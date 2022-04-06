@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useQuery } from 'react-query'
 import { TweetV1 } from 'twitter-api-v2'
-import { getTweetsApi } from '../api/config'
+import { getTweetsApi } from '../webapi/config'
 
 /**
  * @module useTweets
