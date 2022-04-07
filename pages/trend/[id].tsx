@@ -18,12 +18,11 @@ function Trend ({ preloadTweets }: { preloadTweets: TweetV1[] }) {
     setQuery(() => typeof router.query.id === 'string' ? router.query.id : '')
   }, [])
 
-  const { data } = useTweets(query, maxId, 'http://localhost:3000')
+  const { data } = useTweets(query, maxId, '')
   const fetchMore = () => {
     setMaxId(() => tweets[tweets.length - 1].id)
   }
   useEffect(() => {
-    console.log('data', data)
     // check if maxId is not in default state
     if (data && maxId !== 0) {
       const mergeData = [...tweets, ...data]

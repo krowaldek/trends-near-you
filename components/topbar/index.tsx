@@ -23,7 +23,7 @@ type PropsTopbar = {
 const Topbar = ({ title }: PropsTopbar) => {
   const router = useRouter()
   const backHandler = () => {
-    router.push('/')
+    router.push('/', undefined, { shallow: true })
   }
   return (
     <div className={styles.topbar}>

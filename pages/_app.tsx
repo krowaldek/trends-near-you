@@ -33,7 +33,7 @@ export default function MyApp ({ Component, pageProps, router }: AppProps) {
       }
     },
     transition: {
-      duration: 0.3,
+      duration: 0.1,
       easing: 'ease'
     }
   }
@@ -42,7 +42,7 @@ export default function MyApp ({ Component, pageProps, router }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <div className='app-wrap'>
           <Head>
-            <title>Trends near you</title>
+            <title>Trends Near You</title>
           </Head>
           <LazyMotion features={domAnimation}>
             <AnimatePresence exitBeforeEnter>

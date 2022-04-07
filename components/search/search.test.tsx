@@ -26,7 +26,6 @@ it('should show two results ', async () => {
   const searchInput = screen.getByTestId('input')
   userEvent.type(searchInput, 'FR')
   await waitFor(() => {
-    console.log('screen.getAllByTestId :>> ', screen.getAllByTestId('listitem').length)
     return expect(screen.getAllByTestId('listitem')).toHaveLength(2)
   })
 })

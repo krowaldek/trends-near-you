@@ -25,8 +25,6 @@ function HomePage ({ locations }: { locations: TrendLocationV1[]}) {
   }
 
   useEffect(() => {
-    console.log('trends', data)
-    console.log('locations', locations)
     if (data) setTags(data)
   }, [data])
 
