@@ -22,10 +22,6 @@ type PropsTopbar = {
  * @returns {JSX.Element} JSX Element
  */
 const Topbar = ({ title }: PropsTopbar) => {
-  const router = useRouter()
-  const backHandler = () => {
-    router.push('/', undefined, { shallow: true })
-  }
   return (
     <div className={styles.topbar}>
       <div className={styles.back}>
