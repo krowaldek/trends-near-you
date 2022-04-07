@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import styles from './styles.module.scss'
@@ -27,8 +28,13 @@ const Topbar = ({ title }: PropsTopbar) => {
   }
   return (
     <div className={styles.topbar}>
-      <div className={styles.back} onClick={backHandler}>
-        <Image src={backButton} width={30} height={30} alt='back' />
+      <div className={styles.back}>
+        <Link href='/'>
+          <a>
+            <Image src={backButton} width={30} height={30} alt='back' />
+
+          </a>
+        </Link>
       </div>
       <p className={styles.title} role='title'>{title}</p>
     </div>

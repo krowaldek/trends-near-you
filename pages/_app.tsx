@@ -22,18 +22,20 @@ export default function MyApp ({ Component, pageProps, router }: AppProps) {
     name: 'Fade',
     variants: {
       initial: {
-        opacity: 0
+        opacity: 0,
+        scale: 0.95
       },
       animate: {
         opacity: 1,
         scale: 1
       },
       exit: {
-        opacity: 0
+        opacity: 0,
+        scale: 0.95
       }
     },
     transition: {
-      duration: 0.1,
+      duration: 0.15,
       easing: 'ease'
     }
   }
