@@ -5,9 +5,11 @@
     box-shadow: var(--shadow-elevation-medium);
     transition: transform .2s ease-in-out;
     height:100%;
-    cursor: pointer;
-    &:hover {
-        display: relative;
-        transform: scale(1.3);
-    } 
+    cursor: pointer; 
+    @media (hover: hover) {
+        &:hover {
+            display: relative;
+            transform: scale(1.3);
+        }
+    }
 }
