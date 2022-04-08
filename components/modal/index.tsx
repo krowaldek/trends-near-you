@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdClose } from 'react-icons/md'
 
 /**
@@ -23,6 +23,11 @@ type PropsModal = {
  * @returns {JSX.Element} JSX Element
  */
 const Modal = ({ isShow, title, handleClose, children }: PropsModal) => {
+  useEffect(() => {
+    isShow
+      ? document.body.style.overflow = 'hidden'
+      : document.body.style.overflow = 'unset'
+  }, [isShow])
   const isShowClass = isShow ? styles.modal__show : ''
   return (
     <div className={`${styles.modal} ${isShowClass}`}>
