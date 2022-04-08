@@ -10,7 +10,7 @@ type PropsModal = {
     isShow: boolean,
     title?: string,
     children: React.ReactNode
-    handleClose: (e: React.MouseEvent) => void
+    handleClose?: (e: React.MouseEvent) => void
 }
 /**
  * Modal dialog window
@@ -28,7 +28,7 @@ const Modal = ({ isShow, title, handleClose, children }: PropsModal) => {
     <div className={`${styles.modal} ${isShowClass}`}>
       <div className={styles.modal__container}>
         <div className={styles.modal__header}>
-          <div className={styles.modal__close}><MdClose onClick={handleClose} /></div>
+          <div className={styles.modal__close}><MdClose onClick={handleClose} size={25} /></div>
           <div className={styles.modal__title}>{title}</div>
           {children}
         </div>

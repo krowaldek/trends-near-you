@@ -1,7 +1,8 @@
-import { TweetV1 } from 'twitter-api-v2'
-import React from 'react'
+import { MediaEntityV1, TweetV1 } from 'twitter-api-v2'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import Tweet from '../tweet'
+import Viewer from '../viewer'
 
 /**
  * Component props
@@ -22,6 +23,16 @@ type PropsTweets = {
  * @returns {JSX.Element} JSX Element
  */
 const Tweets = ({ tweets, fetchMore }: PropsTweets) => {
+  const [isShowViewer, setIsShowViewer] = useState(false)
+  const [tweetMedia, setTweetMedia] = useState<MediaEntityV1[]>([])
+
+  const closeViewerModal = () => {
+    setIsShowViewer(false)
+  }
+  const showViewerModal = (media: MediaEntityV1[]) => {
+    setIsShowViewer(true)
+    setTweetMedia(media)
+  }
   return (
     <>
       <div className={styles.tweets}>
@@ -31,7 +42,7 @@ const Tweets = ({ tweets, fetchMore }: PropsTweets) => {
               key={tweet.id_str}
               className={styles.tweet}
             >
-              <Tweet tweet={tweet} />
+              <Tweet tweet={tweet} mediaHandler={showViewerModal} />
             </div>
           )
         })}
@@ -39,6 +50,7 @@ const Tweets = ({ tweets, fetchMore }: PropsTweets) => {
       <span className={styles.fetch}>
         <span onClick={fetchMore}>Show more Tweets</span>
       </span>
+      <Viewer media={tweetMedia} isShow={isShowViewer} handleClose={closeViewerModal} />
     </>
   )
 }

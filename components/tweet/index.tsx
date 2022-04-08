@@ -1,4 +1,4 @@
-import { TweetV1 } from 'twitter-api-v2'
+import { MediaEntityV1, TweetV1 } from 'twitter-api-v2'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
@@ -10,8 +10,10 @@ import ReactHtmlParser from 'react-html-parser'
  * @memberof Tag
  */
 type PropsTweet = {
-    /** Tweet object   */
-    tweet: TweetV1
+    /** Tweet object */
+    tweet: TweetV1,
+    /** Media click handler */
+    mediaHandler?: (media: MediaEntityV1[]) => void
 }
 
 enum mediaGridClass { 
@@ -28,9 +30,7 @@ enum mediaGridClass {
  * @param tweet
  * @returns {JSX.Element} JSX Element
  */
-const Tweet = ({ tweet }: PropsTweet) => {
-    const [isTruncated, setIsTruncated] = useState(tweet.truncated)
-
+const Tweet = ({ tweet, mediaHandler }: PropsTweet) => {
     const mediaLength = tweet.extended_entities && tweet.extended_entities.media 
     ? tweet.extended_entities.media.slice(0, 3).length 
     : 0
@@ -60,7 +60,13 @@ const Tweet = ({ tweet }: PropsTweet) => {
         }
         return text
     }
-
+    const clickHandler = () => {
+        if (tweet.extended_entities && tweet.extended_entities.media) {
+            if (mediaHandler) {
+                mediaHandler(tweet.extended_entities.media)
+            }
+        }
+    }
     const favoriteCount = tweet.retweeted_status ? tweet.retweeted_status.favorite_count : tweet.favorite_count
 
   return (
@@ -79,7 +85,7 @@ const Tweet = ({ tweet }: PropsTweet) => {
       <div className={styles.content}>
           {ReactHtmlParser(textMarkup(tweet.text))}
       </div>
-      <div className={mediaClasses}>
+      <div className={mediaClasses} onClick={clickHandler}>
         {tweet.extended_entities && tweet.extended_entities.media && tweet.extended_entities.media.slice(0, 3).map((media, index) => {
           return (
                 <Image
