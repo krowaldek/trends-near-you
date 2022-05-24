@@ -9,4 +9,4 @@ Simple application that uses the Twitter API to view trending topics from the se
 * JSDoc 
 
 ## Demo
-[trends-near-you.vercel.app]
+[trends-near-you.vercel.app](https://trends-near-you.vercel.app)
